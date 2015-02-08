@@ -1,30 +1,36 @@
 var gulp = require("gulp"),
     elixir = require("laravel-elixir"),
-    utilities = require('laravel-elixir/ingredients/commands/Utilities'),
-    notifications = require('laravel-elixir/ingredients/commands/Notification'),
     iconFont = require('gulp-iconfont'),
     iconFontCss = require('gulp-iconfont-css'),
     _  = require('underscore');
 
-elixir.extend("icons", function (outputDir) {
+elixir.extend("icons", function (options) {
 
     var config = this,
         defaultOptions = {
             srcDir:         config.assetsDir + 'icons/',
             sassDir:        config.assetsDir + "sass/",
-            outputDir:      outputDir,
-            iconFontName:   "icon-font",
+            fontDir:        "public/fonts/",
             relativeCssDir: "/fonts/",
-            template:       "icon-font-template.scss",
-            insertGlobals: false,
+            iconFontName:   "icon-font",
+            template:       __dirname + "/icon-font-template.scss"
         };
 
     options = _.extend(defaultOptions, options);
-    //src = "./" + utilities.buildGulpSrc("", options.srcDir);
 
+    // We need to set the parent directory of
+    // the sassDir as the base folder so we
+    // can write the icon font SASS file
+    function getParentDir(path)
+    {
+        var split = path.split("/"),
+            parent = split.slice(0, split.length - 2).join("/") + "/";
 
+        return parent == "/" ? "" : parent;
+    }
 
-    // Get Project Root From Child Folder => ../../../
+    // The icon font SASS file will be saved relative to the fontDir
+    // So we need to get to the project root => ../../../
     function getRoot(path) {
         var backPath = '',
             depth = (path.match(/\//g) || []).length;
@@ -38,18 +44,18 @@ elixir.extend("icons", function (outputDir) {
 
     gulp.task("icons", function () {
 
-        gulp.src(["./" + options.srcDir + "*.svg"], {base: '.'})
+        gulp.src([options.srcDir + "*.svg"], {base: getParentDir(options.sassDir)})
             .pipe(iconFontCss({
                 fontName: options.iconFontName,
                 path: options.template,
-                targetPath: getRoot(options.outputDir) + options.sassDir + "_" + options.iconFontName + ".scss",
+                targetPath: getRoot(options.fontDir) + options.sassDir + "_" + options.iconFontName + ".scss",
                 fontPath: options.relativeCssDir
             }))
             .pipe(iconFont({
                 fontName: options.iconFontName,
                 normalize: true
             }))
-            .pipe(gulp.dest(options.outputDir));
+            .pipe(gulp.dest(options.fontDir));
     });
 
     this.registerWatcher("icons", options.srcDir + "*.svg");
