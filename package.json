@@ -24,7 +24,8 @@
   "homepage": "https://github.com/codezero-be/laravel-elixir-icons",
   "dependencies": {
     "gulp-iconfont": "^1.0.0",
-    "gulp-iconfont-css": "0.0.9"
+    "gulp-iconfont-css": "0.0.9",
+    "underscore": "^1.7.0"
   },
   "devDependencies": {}
 }
