@@ -1,8 +1,8 @@
 # Laravel Elixir Icon Font
 
-![Version](https://img.shields.io/npm/v/laravel-elixir-icons.svg?style=plastic)
-![Dependencies](https://img.shields.io/david/codezero-be/laravel-elixir-icons.svg?style=plastic)
-[![npm](https://img.shields.io/npm/l/laravel-elixir-icons.svg?style=plastic)]()
+[![Version](https://img.shields.io/npm/v/laravel-elixir-icons.svg?style=plastic)](https://www.npmjs.com/package/laravel-elixir-icons)
+[![Dependencies](https://img.shields.io/david/codezero-be/laravel-elixir-icons.svg?style=plastic)](https://www.npmjs.com/package/laravel-elixir-icons)
+[![npm](https://img.shields.io/npm/l/laravel-elixir-icons.svg?style=plastic)](https://www.npmjs.com/package/laravel-elixir-icons)
 
 
 This is an extension for [Laravel Elixir](https://github.com/laravel/elixir) that lets you create an icon webfont from `.svg` images. This is achieved by the Gulp plugins [gulp-iconfont](https://github.com/nfroidure/gulp-iconfont) and [gulp-iconfont-css](https://github.com/backflip/gulp-iconfont-css).
