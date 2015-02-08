@@ -1,14 +1,14 @@
 {
-  "name": "gulp-elixir-icons",
-  "version": "0.0.1",
-  "description": "Icon Font plugin for Laravel Elixir",
+  "name": "laravel-elixir-icons",
+  "version": "0.0.2",
+  "description": "Laravel Elixir Icon Font Extension",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/codezero-be/gulp-elixir-icons"
+    "url": "https://github.com/codezero-be/laravel-elixir-icons"
   },
   "keywords": [
     "laravel",
@@ -21,11 +21,10 @@
     "name": "Ivan Vermeyen"
   },
   "license": "MIT",
-  "homepage": "https://github.com/codezero-be/gulp-elixir-icons",
-  "devDependencies": {
-    "gulp": "^3.8.8",
-    "laravel-elixir": "*",
+  "homepage": "https://github.com/codezero-be/laravel-elixir-icons",
+  "deependencies": {
     "gulp-iconfont": "^1.0.0",
     "gulp-iconfont-css": "0.0.9"
-  }
+  },
+  "devDependencies": {}
 }
