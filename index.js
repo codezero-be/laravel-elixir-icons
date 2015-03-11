@@ -18,17 +18,6 @@ elixir.extend("icons", function (options) {
 
     options = _.extend(defaultOptions, options);
 
-    // We need to set the parent directory of
-    // the sassDir as the base folder so we
-    // can write the icon font SASS file
-    function getParentDir(path)
-    {
-        var split = path.split("/"),
-            parent = split.slice(0, split.length - 2).join("/") + "/";
-
-        return parent == "/" ? "" : parent;
-    }
-
     // The icon font SASS file will be saved relative to the fontDir
     // So we need to get to the project root => ../../../
     function getRoot(path) {
@@ -44,7 +33,7 @@ elixir.extend("icons", function (options) {
 
     gulp.task("icons", function () {
 
-        gulp.src([options.srcDir + "*.svg"], {base: getParentDir(options.sassDir)})
+        gulp.src([options.srcDir + "*.svg"], {base: './'})
             .pipe(iconFontCss({
                 fontName: options.iconFontName,
                 path: options.template,
