@@ -1,24 +1,25 @@
 var gulp = require("gulp"),
-    elixir = require("laravel-elixir"),
+    Elixir = require("laravel-elixir"),
+    Task = Elixir.Task,
+    config = Elixir.config,
     iconFont = require('gulp-iconfont'),
     iconFontCss = require('gulp-iconfont-css'),
     _  = require('underscore');
 
-elixir.extend("icons", function (options) {
+Elixir.extend("icons", function (options) {
 
-    var config = this,
-        defaultOptions = {
-            srcDir:         config.assetsDir + 'icons/',
-            sassDir:        config.assetsDir + "sass/",
-            fontDir:        "public/fonts/",
-            relativeCssDir: "/fonts/",
-            iconFontName:   "icon-font",
-            template:       __dirname + "/icon-font-template.scss"
-        };
+    var defaultOptions = {
+        iconsPath:      config.assetsPath + 'icons/',
+        sassPath:       config.assetsPath + config.css.sass.folder + "/",
+        fontPath:       config.publicPath + "/fonts/",
+        relativeCssDir: "/fonts/",
+        iconFontName:   "icon-font",
+        template:       __dirname + "/icon-font-template.scss"
+    };
 
     options = _.extend(defaultOptions, options);
 
-    // The icon font SASS file will be saved relative to the fontDir
+    // The icon font SASS file will be saved relative to the font path
     // So we need to get to the project root => ../../../
     function getRoot(path) {
         var backPath = '',
@@ -31,24 +32,22 @@ elixir.extend("icons", function (options) {
         return backPath;
     }
 
-    gulp.task("icons", function () {
+    new Task('icons', function() {
 
-        gulp.src([options.srcDir + "*.svg"], {base: './'})
+        return gulp.src([options.iconsPath + "*.svg"], {base: '.'})
             .pipe(iconFontCss({
                 fontName: options.iconFontName,
                 path: options.template,
-                targetPath: getRoot(options.fontDir) + options.sassDir + "_" + options.iconFontName + ".scss",
+                targetPath: getRoot(options.fontPath) + options.sassPath + "_" + options.iconFontName + ".scss",
                 fontPath: options.relativeCssDir
             }))
             .pipe(iconFont({
                 fontName: options.iconFontName,
                 normalize: true
             }))
-            .pipe(gulp.dest(options.fontDir));
-    });
+            .pipe(gulp.dest(options.fontPath));
 
-    this.registerWatcher("icons", options.srcDir + "*.svg");
-
-    return this.queueTask("icons");
+    })
+        .watch(options.iconsPath + "*.svg");
 
 });

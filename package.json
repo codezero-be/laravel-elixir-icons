@@ -1,7 +1,7 @@
 {
   "name": "laravel-elixir-icons",
-  "version": "1.0.0",
-  "description": "Laravel Elixir Icon Font Extension",
+  "version": "2.0.0",
+  "description": "Laravel Elixir 3 Icon Font Extension",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -23,9 +23,9 @@
   "license": "MIT",
   "homepage": "https://github.com/codezero-be/laravel-elixir-icons",
   "dependencies": {
-    "gulp-iconfont": "^1.0.0",
-    "gulp-iconfont-css": "0.0.9",
-    "underscore": "^1.7.0"
+    "gulp-iconfont": "^4.0.0",
+    "gulp-iconfont-css": "1.0.1",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {}
 }

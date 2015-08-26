@@ -32,12 +32,12 @@ Create a `gulpfile.js` and run `mix.icons()` like any other elixir function.
 By default the extension looks for icons in a directory `icons` under the Laravel assets folder. A `_icon-font.scss` file will be written in the `sass` folder and the webfont will be saved in `public/fonts`. You can change these paths by providing one ore more options as an argument.
 
     mix.icons({
-        srcDir:         'path/to/icons/',
-        sassDir:        "path/to/sass/",
-        fontDir:        "path/to/public/fonts/",
+        iconsPath: "assets/icons/",
+        sassPath: "assets/sass/",
+        fontPath: "public/fonts/",
         relativeCssDir: "/fonts/",
-        iconFontName:   "icon-font",
-        template:       "path/to/custom-icon-font-template.scss"
+        iconFontName: "icon-font",
+        template: "path/to/custom-icon-font-template.scss"
     });
     
 The `relativeCssDir` is the relative path from the production `css` file to the font files. By default it is set from the domain root: `/fonts`. The `iconFontName` will be the filename of the webfont and the generated SASS file.
