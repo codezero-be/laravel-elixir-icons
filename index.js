@@ -9,8 +9,8 @@ var gulp = require("gulp"),
 Elixir.extend("icons", function (options) {
 
     var defaultOptions = {
-        iconsPath:      config.assetsPath + 'icons/',
-        sassPath:       config.assetsPath + config.css.sass.folder + "/",
+        iconsPath:      config.assetsPath + "/icons/",
+        sassPath:       config.assetsPath + "/" + config.css.sass.folder + "/",
         fontPath:       config.publicPath + "/fonts/",
         relativeCssDir: "/fonts/",
         iconFontName:   "icon-font",
