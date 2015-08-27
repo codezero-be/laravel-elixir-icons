@@ -1,6 +1,6 @@
 {
   "name": "laravel-elixir-icons",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Laravel Elixir 3 Icon Font Extension",
   "main": "index.js",
   "scripts": {
