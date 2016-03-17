@@ -14,10 +14,12 @@ Elixir.extend("icons", function (options) {
         fontPath:       config.publicPath + "/fonts/",
         relativeCssDir: "/fonts/",
         iconFontName:   "icon-font",
-        template:       __dirname + "/icon-font-template.scss"
+        template:       __dirname + "/icon-font-template.scss",
+        sassFileName:   null
     };
 
     options = _.extend(defaultOptions, options);
+    options.sassFileName = options.sassFileName ? options.sassFileName : '_' + options.iconFontName + '.scss';
 
     // The icon font SASS file will be saved relative to the font path
     // So we need to get to the project root => ../../../
@@ -38,7 +40,7 @@ Elixir.extend("icons", function (options) {
             .pipe(iconFontCss({
                 fontName: options.iconFontName,
                 path: options.template,
-                targetPath: getRoot(options.fontPath) + options.sassPath + "_" + options.iconFontName + ".scss",
+                targetPath: getRoot(options.fontPath) + options.sassPath + options.sassFileName,
                 fontPath: options.relativeCssDir
             }))
             .pipe(iconFont({
