@@ -37,6 +37,7 @@ By default the extension looks for icons in a directory `icons` under the Larave
         fontPath: "public/fonts/",
         relativeCssDir: "/fonts/",
         iconFontName: "icon-font",
+        sassFileName: "_icon-font.scss"
         template: "path/to/custom-icon-font-template.scss"
     });
     
